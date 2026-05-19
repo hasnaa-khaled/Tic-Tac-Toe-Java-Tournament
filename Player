@@ -1,0 +1,35 @@
+import java.util.Scanner;
+import java.util.InputMismatchException;
+
+public abstract class Player {
+    private final String name;
+    private final char symbol;
+    protected int wins;
+    protected int losses;
+    protected int draws;
+
+    public Player(String name, char symbol){
+        this.name = name;
+        this.symbol = symbol;
+        this.wins = 0;
+        this.losses = 0;
+        this.draws = 0;
+    }
+    public abstract int[] getMove(Board board, Scanner scanner);
+
+    //getters
+    public String getName() { return name; }
+    public char getSymbol() { return symbol; }
+    public int getWins() { return wins; }
+
+    public void addWin() { wins++; }
+    public void addLoss() { losses++; }
+    public void addDraw() { draws++; }
+
+    public void showStats() {
+        System.out.println(name + " (" + symbol + "):");
+        System.out.println("  Wins: " + wins);
+        System.out.println("  Losses: " + losses);
+        System.out.println("  Draws: " + draws);
+    }
+}
